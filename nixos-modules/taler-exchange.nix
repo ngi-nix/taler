@@ -2,7 +2,7 @@
 let
   taler-exchange = pkgs.taler-exchange.overrideAttrs (oa: {
     preConfigure = ''
-      ${oa.preConfigure}
+      ${oa.preConfigure or ""}
       substituteInPlace src/exchangedb/plugin_exchangedb_postgres.c \
         --replace "#define AUTO_EXPLAIN 1" "#define AUTO_EXPLAIN 0"
     '';
